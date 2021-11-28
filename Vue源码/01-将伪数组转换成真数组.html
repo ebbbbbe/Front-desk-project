@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>转化真数组</title>
+</head>
+<body>
+    <ul>
+        <li>大家好1</li>
+        <li>大家好2</li>
+        <li>大家好3</li>
+    </ul>
+    <script>
+        // 将伪数组转化为真数组
+        // 伪数组： 可以当成数组来存储数据，但是不能使用数组中的哪些方法(push pop join)
+        // 也有length 属性 也可以用索引来访问 不能用new Array() 创建
+        // 有时候，用伪数组的时候，也需要去用数组中的方法，但是伪数组又不能直接使用，所以此时就需要将伪数组先转化成数组
+        const lis = document.querySelectorAll('li');
+        const lis2 = document.getElementsByName('li')
+        // 标签名来获取元素
+        const nums = [10, 20, 30, 40, 50];
+        console.log(nums.slice(0,2));//正常的使用方法
+        console.log([].slice.call(nums));//使用call改变this的指向，让nums来调用4
+        console.log([].slice.call(nums,0,2));//使用call改变this的指向，让nums来调用
+        console.log([].slice.call(lis));//这样做的好处是伪数组也可以调用slice方法，从而转换成一个真数组
+        console.log(Array.prototype.slice.call(lis2));//借助与call 的强大转换this的行为 让伪数组去调用一个真数组的方法aclie 从而将为数组转换为真数组
+        // Apply 也可以改变this指向 借用某对象的方法来实现某个功能
+        // 查找一组数中的最大值 Math.max()
+        const nums2 = [1, 20, 32, 16, 19, 52, 47, 66, 12]
+        console.log(Math.max.apply(nums2,nums2));
+    </script>
+</body>
+</html>

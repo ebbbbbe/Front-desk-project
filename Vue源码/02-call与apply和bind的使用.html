@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>改变this指向</title>
+</head>
+<body>
+    <input type="button" value='按钮'>
+    <input type="button" value='按钮'>
+    <input type="button" value='按钮'>
+    <input type="button" value='按钮'>
+    <input type="button" value='按钮'>
+    <input type="button" value='按钮'>
+    <script>
+        /* 
+        call apply dind 的使用
+        共同点：
+        1.都可以改变this指向
+        不同点：
+            1.call apply会让函数立即执行
+            2.call的参数是连续的 而apply的参数必须放在数组中
+            3.bind 不会让函数立即执行会返回当前函数的一个副本 相当于拷贝一个函数
+        
+        */
+    //    1。函数的调用
+    function fn(){
+        console.log(123);
+    }
+    fn();//让函数立即执行
+    fn.call();
+    fn.apply()
+    const foo = fn.bind(); //bind不会让函数立即执行只会返回一个副本
+
+    // 2.bind的使用场景 单击按钮2秒后变红
+    // 因为定时器中普通函数中的this是指向的window 此时需要让里面的this指向当前被触发的按钮
+    const btns = document.querySelectorAll('input')
+    for(let i = 0; i < btns.length; i++){
+        btns[i].onclick = function(){
+            // this 在此时指向当前被触发的按钮
+            setTimeout(function(){
+                // 定时器普通函数中this指向的是window
+                this.style.backgroundColor='red'
+            }.bind(this),2000)
+        }
+    }
+    </script>
+</body>
+</html>

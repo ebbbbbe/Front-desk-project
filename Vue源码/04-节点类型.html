@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p>{{num}}</p>
+    </div>
+    <ul>
+        <li>大家好1</li>
+        <li class="1i2" id="li123">大家好2</li>
+        <li>大家好3</li>
+    </ul>
+    <script>
+        const ul = document.querySelector('ul');
+        const lis = ul.childNodes //childNodes 不仅可以获取便签节点，还可以其它节点（文本，注销）
+        console.log(lis.length);
+
+        // 节点的类型：元素/ 标签 属性 文本 注释 碎片
+        // nodeType 节点类型  标签：1  属性：2 文本：3
+        // nodeName 节点名称
+        // nodeValue 节点的值 便签的nodeValue 为null
+        // for(var i = 0;i < lis.length;i++){
+        //     console.log(lis[i].nodeType,lis[i].nodeName,lis[i].nodeValue)
+        // }
+        const li2 = document.querySelector('.li2');
+        // const node = li2.getAttributeNode('class')
+        const node = li2.getAttributeNode('class')
+        console.log(node.nodeType,node.nodeName,node.nodeValue);
+    </script>
+</body>
+</html>
