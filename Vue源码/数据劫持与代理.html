@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Vu的例子</h1>
+        <p>{{msg}}</p>
+    </div>
+    <script src="./js-source/myVue2.js"></script>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'hell',
+                num:200,
+                foo:{
+                    aa:20,
+                    bb:30
+                }
+            }
+        })
+        console.log(vm);
+    </script>
+</body>
+</html>
